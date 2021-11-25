@@ -7,7 +7,7 @@
     <hr />
     
     <div class="card">
-        <asp:Button ID="btnAgregar" Text="Agregar" OnClick="btnAgregar_Click" runat="server" />
+        <asp:Button CssClass="btn btn-primary" ID="btnAgregar" Text="Agregar" OnClick="btnAgregar_Click" runat="server" />
     </div>
 
     <hr />
@@ -21,8 +21,8 @@
             <asp:BoundField DataField="PermisoVender" HeaderText="Puede Vender" />
             <asp:TemplateField HeaderText="Opciones">
                 <ItemTemplate>
-                    <asp:Button CommandName="Modificar" ID="btnModificar" OnClick="btnModificar_Click" Text="Modificar" runat="server" />
-                    <asp:Button CommandName="Borrar" ID="btnBorrar" OnClick="btnBorrar_Click" Text="Borrar" runat="server" />
+                    <asp:Button CssClass="btn btn-secondary" CommandName="Modificar" ID="btnModificar" OnClick="btnModificar_Click" Text="Modificar" runat="server" />
+                    <asp:Button CssClass="btn btn-danger" CommandName="Borrar" ID="btnBorrar" OnClick="btnBorrar_Click" Text="Borrar" runat="server" />
                 </ItemTemplate>
             </asp:TemplateField>
         </Columns>
