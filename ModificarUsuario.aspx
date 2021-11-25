@@ -29,13 +29,13 @@
         <div>
             <asp:Label Text="Nueva clave (dejar en blanco para mantener la actual):" runat="server" />
             <asp:TextBox ID="txtClave" runat="server" />
-            <asp:Button ID="btnGenerar" Text="Generar" OnClick="btnGenerar_Click" runat="server" />
+            <asp:Button CssClass="btn btn-secondary" ID="btnGenerar" Text="Generar" OnClick="btnGenerar_Click" runat="server" />
         </div>
     </div>
     
     <hr />
 
     <div>
-        <asp:Button Text="Modificar" ID="btnModificar" OnClick="btnModificar_Click" runat="server" />
+        <asp:Button CssClass="btn btn-primary" Text="Modificar" ID="btnModificar" OnClick="btnModificar_Click" runat="server" />
     </div>
 </asp:Content>

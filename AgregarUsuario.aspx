@@ -25,13 +25,13 @@
         <div>
             <asp:Label Text="Clave:" runat="server" />
             <asp:TextBox ID="txtClave" runat="server" />
-            <asp:Button ID="btnGenerar" Text="Generar" OnClick="btnGenerar_Click" runat="server" />
+            <asp:Button CssClass="btn btn-secondary" ID="btnGenerar" Text="Generar" OnClick="btnGenerar_Click" runat="server" />
         </div>
     </div>
 
     <hr />
 
     <div>
-        <asp:Button Text="Agregar" ID="btnAgregar" OnClick="btnAgregar_Click" runat="server" />
+        <asp:Button CssClass="btn btn-primary" Text="Agregar" ID="btnAgregar" OnClick="btnAgregar_Click" runat="server" />
     </div>
 </asp:Content>

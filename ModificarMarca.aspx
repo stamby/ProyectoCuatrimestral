@@ -20,6 +20,6 @@
     <hr />
 
     <div>
-        <asp:Button Text="Modificar" ID="btnModificar" OnClick="btnModificar_Click" runat="server" />
+        <asp:Button CssClass="btn btn-primary" Text="Modificar" ID="btnModificar" OnClick="btnModificar_Click" runat="server" />
     </div>
 </asp:Content>

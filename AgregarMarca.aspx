@@ -14,6 +14,6 @@
     <hr />
 
     <div>
-        <asp:Button Text="Agregar" ID="btnAgregar" OnClick="btnAgregar_Click" runat="server" />
+        <asp:Button CssClass="btn btn-primary" Text="Agregar" ID="btnAgregar" OnClick="btnAgregar_Click" runat="server" />
     </div>
 </asp:Content>

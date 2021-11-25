@@ -5,7 +5,11 @@
         <h1><%: Title %></h1>
     </div>
     <div>
-        <% foreach (var producto in listaProductos) %>
+        <% foreach (var producto in listaProductos)
+            {
+
+            }
+       %>
     </div>
     <!--
     <div class="jumbotron">
