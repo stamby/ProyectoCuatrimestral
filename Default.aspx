@@ -13,8 +13,8 @@
         <div style="display: flex; flex-direction: row; margin: 10px;" class="card" style="width: 18rem;">
             <img src="<%: item.Ilustracion.ToString() %>" class="card-img-top" alt="...">
             <div class="card-body">
-                <h3 class="card-title"><%: item.Nombre %></h3>
-                <p class="card-text"><%: item.Descripcion %></p>
+                <h3 class="card-title"><%: HttpUtility.HtmlEncode(item.Nombre) %></h3>
+                <p class="card-text"><%: HttpUtility.HtmlEncode(item.Descripcion) %></p>
                 <a href="#" class="btn btn-primary"><%: String.Format("{0:C}", item.PrecioLista) %></a>
 
             </div>
