@@ -24,8 +24,10 @@ namespace ProyectoCuatrimestral
         }
         protected void Mostrar()
         {
+            UsuarioNegocio usuarioNegocio = new UsuarioNegocio();
             ProductoNegocio productoNegocio = new ProductoNegocio();
-            ProductosGrilla.DataSource = productoNegocio.Listar();
+            ProductosGrilla.DataSource = productoNegocio.Listar(
+                usuarioNegocio.DesdeID(1)); // Administrador
             ProductosGrilla.DataBind();
         }
         protected void btnModificar_Click(object sender, EventArgs e)

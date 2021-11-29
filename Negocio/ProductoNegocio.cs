@@ -145,7 +145,7 @@ namespace ProyectoCuatrimestral.Negocio
                 + "u.nombre OferenteNombre, u.p_admin OferentePermisoAdministrador, u.p_comprar OferentePermisoComprar, "
                 + "u.p_vender OferentePermisoVender from PRODUCTOS p "
                 + "left join MARCAS m on p.id_marca = m.id left join USUARIOS u on p.id_usuario = u.id"
-                + (usuario == null ? "" : "where p.id_usuario = " + usuario.Id)
+                + (usuario == null ? "" : " where p.id_usuario = " + usuario.Id)
                 + ";");
 
             acceso.EjecutarLectura();
