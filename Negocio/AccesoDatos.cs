@@ -11,8 +11,8 @@ namespace ProyectoCuatrimestral.Negocio
 
         public AccesoDatos()
         {
-            //Conexion = new SqlConnection("server=.\\SQLEXPRESS; database = CATALOGO_DB; integrated security = true");
-            Conexion = new SqlConnection("server=.\\SQLEXPRESS; database = master; integrated security = true");
+            Conexion = new SqlConnection(
+                "server = .\\SQLEXPRESS; database = master; integrated security = true");
             Comando = new SqlCommand();
             Comando.Connection = Conexion;
         }
@@ -27,6 +27,18 @@ namespace ProyectoCuatrimestral.Negocio
         {
             Conexion.Open();
             Lector = Comando.ExecuteReader();
+        }
+
+        public string GetConsulta()
+        {
+            string query = Comando.CommandText;
+
+            foreach (SqlParameter p in Comando.Parameters)
+            {
+                query = query.Replace(p.ParameterName, p.Value.ToString());
+            }
+
+            return query;
         }
 
         public void CerrarConexion()

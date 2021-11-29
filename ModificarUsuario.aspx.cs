@@ -42,8 +42,6 @@ namespace ProyectoCuatrimestral
                 return;
             }
 
-            lblID.Text = Convert.ToString(usuario.Id);
-
             txtNombre.Text = usuario.Nombre;
             chkAdmin.Checked = usuario.PermisoAdmin;
             chkComprar.Checked = usuario.PermisoComprar;

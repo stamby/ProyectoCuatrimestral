@@ -64,9 +64,13 @@ namespace ProyectoCuatrimestral.Negocio
             acceso.SetConsulta(
                 "select nombre, p_admin, p_comprar, p_vender from USUARIOS where id = " +
                 ID + ";");
+
             acceso.EjecutarLectura();
+
             Usuario usuario = new Usuario();
+
             usuario.Id = ID;
+
             bool correcto = acceso.Lector.Read();
 
             if (correcto)

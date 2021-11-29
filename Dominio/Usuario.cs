@@ -1,5 +1,6 @@
 ﻿namespace ProyectoCuatrimestral.Dominio
 {
+
     public class Usuario
     {
         public int Id { get; set; }
@@ -23,6 +24,11 @@
             this.PermisoAdmin = PermisoAdmin;
             this.PermisoComprar = PermisoComprar;
             this.PermisoVender = PermisoVender;
+        }
+
+        override public string ToString()
+        {
+            return Nombre;
         }
     }
 }
