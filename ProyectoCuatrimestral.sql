@@ -7,6 +7,10 @@ create table usuarios (
 	p_vender bit not null default 1
 );
 
+insert into usuarios (
+	nombre, p_admin, p_comprar, p_vender) values (
+		'Administrador', true, true, true);
+
 create table marcas (
 	id bigint not null identity primary key,
 	nombre varchar(50) not null default 'Marca sin Nombre'
@@ -15,10 +19,10 @@ create table marcas (
 create table productos (
 	id bigint not null identity primary key,
 	id_marca bigint foreign key references marcas(id) not null,
-	-- El usuario que lo publicó.
+	-- El usuario que lo publicÃ³.
 	id_usuario bigint foreign key references usuarios(id) not null,
-	nombre varchar(50) not null default 'Producto sin título',
-	descripcion varchar(1000) not null default 'El vendedor no incluyó una descripción del producto.',
+	nombre varchar(50) not null default 'Producto sin tÃ­tulo',
+	descripcion varchar(1000) not null default 'El vendedor no incluyÃ³ una descripciÃ³n del producto.',
 	unidades bigint not null default 1,
 	precio_lista money not null default 0,
 	-- La URL de una imagen del producto.
@@ -30,9 +34,9 @@ create table movimientos (
 	tipo bit not null default 0,
 	id bigint not null identity primary key,
 	id_producto bigint not null foreign key references productos(id),
-	-- El que realizó el movimiento.
+	-- El que realizÃ³ el movimiento.
 	id_usuario bigint foreign key references usuarios(id) not null,
-	-- El precio puede cambiar, por lo que se guarda el que tenía al ocurrir el movimiento.
+	-- El precio puede cambiar, por lo que se guarda el que tenÃ­a al ocurrir el movimiento.
 	precio money not null default 0,
 	unidades bigint not null default 1
 );
@@ -41,6 +45,9 @@ create table claves (
 	id_usuario bigint foreign key references usuarios(id) not null,
 	clave varchar(50) not null default ''
 );
+
+insert into claves (id_usuario) values (1);
+
 create trigger tr_usuarios_borrar_clave on Usuarios
 after delete
 as
