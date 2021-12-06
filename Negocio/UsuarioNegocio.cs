@@ -112,5 +112,45 @@ namespace ProyectoCuatrimestral.Negocio
 
             return lista;
         }
+        public Usuario Ingresar(string strUsuario, string strClave)
+        {
+            Usuario usuario = new Usuario();
+            Clave clave = new Clave();
+
+            AccesoDatos acceso = new AccesoDatos();
+
+            acceso.SetParametros("@Nombre", strUsuario);
+            acceso.SetParametros("@Secreto", strClave);
+
+            acceso.SetConsulta(
+                "select u.id IdUsuario, u.nombre NombreUsuario, u.p_admin Administrador, "
+                + "u.p_comprar PuedeComprar, u.p_vender PuedeVender, "
+                + "c.id IdClave, c.clave Secreto from USUARIOS u "
+                + "left join CLAVES c on u.id = c.id_usuario "
+                + "where u.nombre = @Nombre and c.clave = @Secreto;");
+
+            acceso.EjecutarLectura();
+
+            if (acceso.Lector.Read())
+            {
+                usuario.Id = Convert.ToInt32(acceso.Lector["IdUsuario"]);
+                usuario.Nombre = (string)acceso.Lector["NombreUsuario"];
+                usuario.PermisoAdmin = (bool)acceso.Lector["Administrador"];
+                usuario.PermisoComprar = (bool)acceso.Lector["PuedeComprar"];
+                usuario.PermisoVender = (bool)acceso.Lector["PuedeVender"];
+
+                clave.Id = Convert.ToInt32(acceso.Lector["IdClave"]);
+                clave.Secreto = (string)acceso.Lector["Secreto"];
+
+                acceso.CerrarConexion();
+            }
+            else
+            {
+                acceso.CerrarConexion();
+                return null;
+            }
+            
+            return usuario;
+        }
     }
 }

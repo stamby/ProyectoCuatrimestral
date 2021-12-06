@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="ProyectoCuatrimestral.SiteMaster" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Ingreso.aspx.cs" Inherits="ProyectoCuatrimestral.Ingreso" %>
 
 <!DOCTYPE html>
 
@@ -6,7 +6,7 @@
 <head runat="server">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%: Page.Title %> - Minimercado</title>
+    <title>Ingresar - Minimercado</title>
 
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
@@ -37,48 +37,30 @@
                 <%--Site Scripts--%>
             </Scripts>
         </asp:ScriptManager>
-
-        <div class="navbar navbar-inverse navbar-fixed-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" runat="server" href="~/">Minimercado</a>
-                </div>
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <% if (usuario.PermisoComprar)
-                            { %>
-                        <li><a runat="server" href="~/">Catálogo</a></li>
-                        <%  } %>
-                        <% if (usuario.PermisoVender)
-                            { %>
-                        <li><a runat="server" href="~/Productos">Mis Productos</a></li>
-                        <li><a runat="server" href="~/Marcas">Marcas</a></li>
-                        <%  } %>
-                        <% if (usuario.PermisoAdmin)
-                            { %>
-                        <li><a runat="server" href="~/Usuarios">Usuarios</a></li>
-                        <%  } %>
-                        <li style="position: absolute; right: 0.6em; top: 0.6em;">
-                            <asp:Button CssClass="btn btn-danger" ID="btnSalir" OnClick="btnSalir_Click" Text="Salir" runat="server" />
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
         <div class="container body-content">
-            <asp:ContentPlaceHolder ID="MainContent" runat="server">
-            </asp:ContentPlaceHolder>
+            <div>
+                <h1>Ingresar al sistema</h1>
+            </div>
+            <hr />
+            <div>
+                <div>
+                    <asp:Label Text="Usuario:" runat="server" />
+                    <asp:TextBox ID="txtUsuario" runat="server" />
+                </div>
+                <br />
+                <div>
+                    <asp:Label Text="Clave:" runat="server" />
+                    <asp:TextBox ID="txtClave" TextMode="Password" runat="server" />
+                </div>
+                <hr />
+                <asp:Button CssClass="btn btn-primary" ID="btnIngresar" Text="Ingresar" OnClick="btnIngresar_Click" runat="server" />
+            </div>
             <hr />
             <footer>
                 <p>&copy; <%: DateTime.Now.Year %> - Minimercado</p>
             </footer>
         </div>
-
     </form>
 </body>
 </html>
+
