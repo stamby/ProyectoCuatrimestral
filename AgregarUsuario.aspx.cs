@@ -16,7 +16,14 @@ namespace ProyectoCuatrimestral
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            Usuario usuario = (Usuario)Session["Usuario"];
 
+            if (usuario == null || !usuario.PermisoAdmin)
+            {
+                Session.Clear();
+                Response.Redirect("/Ingreso");
+                return;
+            }
         }
 
         protected void btnAgregar_Click(object sender, EventArgs e)

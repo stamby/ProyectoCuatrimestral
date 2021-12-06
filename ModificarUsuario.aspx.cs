@@ -15,6 +15,15 @@ namespace ProyectoCuatrimestral
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            Usuario usuario = (Usuario)Session["Usuario"];
+
+            if (usuario == null || !usuario.PermisoAdmin)
+            {
+                Session.Clear();
+                Response.Redirect("/Ingreso");
+                return;
+            }
+
             if (IsPostBack)
                 return;
 
@@ -34,7 +43,7 @@ namespace ProyectoCuatrimestral
 
             UsuarioNegocio usuarioNegocio = new UsuarioNegocio();
 
-            Usuario usuario = usuarioNegocio.DesdeID(ID);
+            usuario = usuarioNegocio.DesdeID(ID);
 
             if (usuario == null)
             {

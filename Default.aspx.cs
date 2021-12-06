@@ -16,6 +16,30 @@ namespace ProyectoCuatrimestral
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            Usuario usuario = (Usuario)Session["Usuario"];
+
+            if (usuario == null)
+            {
+                Response.Redirect("/Ingreso");
+                return;
+            }
+            else
+            {
+                if (!usuario.PermisoComprar)
+                {
+                    if (usuario.PermisoVender)
+                    {
+                        Response.Redirect("/Productos");
+                        return;
+                    }
+                    if (usuario.PermisoAdmin)
+                    {
+                        Response.Redirect("/Usuarios");
+                        return;
+                    }
+                }
+            }
+
             ProductoNegocio productoNegocio = new ProductoNegocio();
 
             listaProductos = productoNegocio.Listar();
