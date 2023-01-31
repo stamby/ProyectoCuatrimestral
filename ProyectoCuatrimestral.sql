@@ -1,54 +1,40 @@
+create database tp;
 
-create table usuarios (
-	id bigint not null identity primary key,
-	nombre varchar(50) not null default 'Usuario',
-	p_admin bit not null default 0,
-	p_comprar bit not null default 1,
-	p_vender bit not null default 1
+use tp;
+
+create table especialidades (
+    id int identity(1,1) primary key not null,
+    nombre varchar(40) not null
 );
 
-insert into usuarios (
-	nombre, p_admin, p_comprar, p_vender) values (
-		'Administrador', true, true, true);
-
-create table marcas (
-	id bigint not null identity primary key,
-	nombre varchar(50) not null default 'Marca sin Nombre'
+create table medicos (
+    id int identity(1,1) primary key not null,
+    nombre varchar(40) not null,
+    apellido varchar(40) not null,
+    email varchar(40) not null,
+    clave varchar(10) not null default '',
+    especialidad_id int foreign key references especialidades(id)
 );
 
-create table productos (
-	id bigint not null identity primary key,
-	id_marca bigint foreign key references marcas(id) not null,
-	-- El usuario que lo publicó.
-	id_usuario bigint foreign key references usuarios(id) not null,
-	nombre varchar(50) not null default 'Producto sin título',
-	descripcion varchar(1000) not null default 'El vendedor no incluyó una descripción del producto.',
-	unidades bigint not null default 1,
-	precio_lista money not null default 0,
-	-- La URL de una imagen del producto.
-	logotipo varchar(200)
+create table pacientes (
+    id int identity(1,1) primary key not null,
+    nombre varchar(40) not null,
+    apellido varchar(40) not null,
+    email varchar(40) not null,
+    clave varchar(10) not null default '',
+    obra_social varchar(40) not null
 );
 
-create table movimientos (
-	-- El tipo 0 es para la compra; el 1, para la venta.
-	tipo bit not null default 0,
-	id bigint not null identity primary key,
-	id_producto bigint not null foreign key references productos(id),
-	-- El que realizó el movimiento.
-	id_usuario bigint foreign key references usuarios(id) not null,
-	-- El precio puede cambiar, por lo que se guarda el que tenía al ocurrir el movimiento.
-	precio money not null default 0,
-	unidades bigint not null default 1
-);
-create table claves (
-	id bigint not null identity primary key,
-	id_usuario bigint foreign key references usuarios(id) not null,
-	clave varchar(50) not null default ''
+create table turnos (
+    id int identity(1,1) primary key not null,
+    hora_desde datetime not null,
+    hora_hasta datetime not null,
+    medico_id int foreign key references medicos(id),
+    paciente_id int foreign key references pacientes(id)
 );
 
-insert into claves (id_usuario) values (1);
-
-create trigger tr_usuarios_borrar_clave on Usuarios
-after delete
-as
-delete from claves where id_usuario = (select id from deleted);
+create index indice_turnos on turnos (
+    hora_desde,
+    hora_hasta,
+    medico_id
+);
