@@ -105,11 +105,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="AgregarMarca.aspx" />
-    <Content Include="AgregarProducto.aspx" />
-    <Content Include="AgregarUsuario.aspx" />
+    <Content Include="AgregarDisponibilidad.aspx" />
+    <Content Include="AgregarEspecialidad.aspx" />
+    <Content Include="AgregarMedico.aspx" />
+    <Content Include="AgendaMedico.aspx" />
     <Content Include="Ingreso.aspx" />
-    <Content Include="Marcas.aspx" />
+    <Content Include="Especialidades.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -128,10 +129,7 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
-    <Content Include="ModificarProducto.aspx" />
-    <Content Include="Productos.aspx" />
-    <Content Include="ModificarMarca.aspx" />
-    <Content Include="ModificarUsuario.aspx" />
+    <Content Include="ModificarEspecialidad.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -161,36 +159,43 @@
     <Content Include="Scripts\WebForms\WebParts.js" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <Content Include="Site.Master" />
-    <Content Include="Usuarios.aspx" />
+    <Content Include="Medicos.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
     <Content Include="Site.Mobile.Master" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AgregarMarca.aspx.cs">
-      <DependentUpon>AgregarMarca.aspx</DependentUpon>
+    <Compile Include="AgregarDisponibilidad.aspx.cs">
+      <DependentUpon>AgregarDisponibilidad.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="AgregarMarca.aspx.designer.cs">
-      <DependentUpon>AgregarMarca.aspx</DependentUpon>
+    <Compile Include="AgregarDisponibilidad.aspx.designer.cs">
+      <DependentUpon>AgregarDisponibilidad.aspx</DependentUpon>
     </Compile>
-    <Compile Include="AgregarProducto.aspx.cs">
-      <DependentUpon>AgregarProducto.aspx</DependentUpon>
+    <Compile Include="AgregarEspecialidad.aspx.cs">
+      <DependentUpon>AgregarEspecialidad.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="AgregarProducto.aspx.designer.cs">
-      <DependentUpon>AgregarProducto.aspx</DependentUpon>
+    <Compile Include="AgregarEspecialidad.aspx.designer.cs">
+      <DependentUpon>AgregarEspecialidad.aspx</DependentUpon>
     </Compile>
-    <Compile Include="AgregarUsuario.aspx.cs">
-      <DependentUpon>AgregarUsuario.aspx</DependentUpon>
+    <Compile Include="AgregarMedico.aspx.cs">
+      <DependentUpon>AgregarMedico.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="AgregarUsuario.aspx.designer.cs">
-      <DependentUpon>AgregarUsuario.aspx</DependentUpon>
+    <Compile Include="AgregarMedico.aspx.designer.cs">
+      <DependentUpon>AgregarMedico.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
-    <Compile Include="Dominio\Clave.cs" />
+    <Compile Include="Dominio\Persona.cs" />
+    <Compile Include="AgendaMedico.aspx.cs">
+      <DependentUpon>AgendaMedico.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AgendaMedico.aspx.designer.cs">
+      <DependentUpon>AgendaMedico.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Ingreso.aspx.cs">
       <DependentUpon>Ingreso.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -198,12 +203,12 @@
     <Compile Include="Ingreso.aspx.designer.cs">
       <DependentUpon>Ingreso.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Marcas.aspx.cs">
-      <DependentUpon>Marcas.aspx</DependentUpon>
+    <Compile Include="Especialidades.aspx.cs">
+      <DependentUpon>Especialidades.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Marcas.aspx.designer.cs">
-      <DependentUpon>Marcas.aspx</DependentUpon>
+    <Compile Include="Especialidades.aspx.designer.cs">
+      <DependentUpon>Especialidades.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Default.aspx.cs">
@@ -213,47 +218,25 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Dominio\Movimiento.cs" />
-    <Compile Include="Dominio\Producto.cs" />
-    <Compile Include="Dominio\Marca.cs" />
-    <Compile Include="Dominio\Usuario.cs" />
+    <Compile Include="Dominio\Paciente.cs" />
+    <Compile Include="Dominio\Turno.cs" />
+    <Compile Include="Dominio\Especialidad.cs" />
+    <Compile Include="Dominio\Medico.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="ModificarProducto.aspx.cs">
-      <DependentUpon>ModificarProducto.aspx</DependentUpon>
+    <Compile Include="Negocio\PacienteNegocio.cs" />
+    <Compile Include="ModificarEspecialidad.aspx.cs">
+      <DependentUpon>ModificarEspecialidad.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ModificarProducto.aspx.designer.cs">
-      <DependentUpon>ModificarProducto.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Productos.aspx.cs">
-      <DependentUpon>Productos.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Productos.aspx.designer.cs">
-      <DependentUpon>Productos.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="ModificarMarca.aspx.cs">
-      <DependentUpon>ModificarMarca.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ModificarMarca.aspx.designer.cs">
-      <DependentUpon>ModificarMarca.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="ModificarUsuario.aspx.cs">
-      <DependentUpon>ModificarUsuario.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ModificarUsuario.aspx.designer.cs">
-      <DependentUpon>ModificarUsuario.aspx</DependentUpon>
+    <Compile Include="ModificarEspecialidad.aspx.designer.cs">
+      <DependentUpon>ModificarEspecialidad.aspx</DependentUpon>
     </Compile>
     <Compile Include="Negocio\AccesoDatos.cs" />
-    <Compile Include="Negocio\ClaveNegocio.cs" />
-    <Compile Include="Negocio\MovimientoNegocio.cs" />
-    <Compile Include="Negocio\ProductoNegocio.cs" />
-    <Compile Include="Negocio\UsuarioNegocio.cs" />
-    <Compile Include="Negocio\MarcaNegocio.cs" />
+    <Compile Include="Negocio\TurnoNegocio.cs" />
+    <Compile Include="Negocio\MedicoNegocio.cs" />
+    <Compile Include="Negocio\EspecialidadNegocio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
@@ -269,12 +252,12 @@
     <Compile Include="Site.Mobile.Master.designer.cs">
       <DependentUpon>Site.Mobile.Master</DependentUpon>
     </Compile>
-    <Compile Include="Usuarios.aspx.cs">
-      <DependentUpon>Usuarios.aspx</DependentUpon>
+    <Compile Include="Medicos.aspx.cs">
+      <DependentUpon>Medicos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Usuarios.aspx.designer.cs">
-      <DependentUpon>Usuarios.aspx</DependentUpon>
+    <Compile Include="Medicos.aspx.designer.cs">
+      <DependentUpon>Medicos.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>

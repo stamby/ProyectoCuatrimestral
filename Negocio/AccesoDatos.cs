@@ -12,7 +12,7 @@ namespace ProyectoCuatrimestral.Negocio
         public AccesoDatos()
         {
             Conexion = new SqlConnection(
-                "server = .\\SQLEXPRESS; database = master; integrated security = true");
+                "server = .\\SQLEXPRESS; database = tp; integrated security = true");
             Comando = new SqlCommand();
             Comando.Connection = Conexion;
         }

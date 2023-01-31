@@ -11,17 +11,44 @@ namespace ProyectoCuatrimestral
 {
 
 
-    public partial class Ingreso
+    public partial class AgregarMedico
     {
 
         /// <summary>
-        /// txtUsuario control.
+        /// txtNombre control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtUsuario;
+        protected global::System.Web.UI.WebControls.TextBox txtNombre;
+
+        /// <summary>
+        /// chkAdmin control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkAdmin;
+
+        /// <summary>
+        /// chkComprar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkComprar;
+
+        /// <summary>
+        /// chkVender control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkVender;
 
         /// <summary>
         /// txtClave control.
@@ -33,30 +60,21 @@ namespace ProyectoCuatrimestral
         protected global::System.Web.UI.WebControls.TextBox txtClave;
 
         /// <summary>
-        /// chkPaciente control.
+        /// btnGenerar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton chkPaciente;
+        protected global::System.Web.UI.WebControls.Button btnGenerar;
 
         /// <summary>
-        /// chkMedico control.
+        /// btnAgregar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton chkMedico;
-
-        /// <summary>
-        /// btnIngresar control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnIngresar;
+        protected global::System.Web.UI.WebControls.Button btnAgregar;
     }
 }

@@ -6,7 +6,7 @@
 <head runat="server">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ingresar - Minimercado</title>
+    <title>Ingresar - Turnos para Atención</title>
 
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
@@ -39,12 +39,12 @@
         </asp:ScriptManager>
         <div class="container body-content">
             <div>
-                <h1>Ingresar al sistema</h1>
+                <h1>Ingresar al Sistema</h1>
             </div>
             <hr />
             <div>
                 <div>
-                    <asp:Label Text="Usuario:" runat="server" />
+                    <asp:Label Text="E-Mail:" runat="server" />
                     <asp:TextBox ID="txtUsuario" runat="server" />
                 </div>
                 <br />
@@ -52,12 +52,18 @@
                     <asp:Label Text="Clave:" runat="server" />
                     <asp:TextBox ID="txtClave" TextMode="Password" runat="server" />
                 </div>
+                <br />
+                <div>
+                    <asp:RadioButton ID="chkPaciente" Text="Soy Paciente" Checked="True" GroupName="RadioGroup1" runat="server" />
+                    <br />
+                    <asp:RadioButton ID="chkMedico" Text="Soy Médico" GroupName="RadioGroup1" runat="server" />
+                </div>
                 <hr />
                 <asp:Button CssClass="btn btn-primary" ID="btnIngresar" Text="Ingresar" OnClick="btnIngresar_Click" runat="server" />
             </div>
             <hr />
             <footer>
-                <p>&copy; <%: DateTime.Now.Year %> - Minimercado</p>
+                <p>&copy; <%: DateTime.Now.Year %> - Turnos para Atención</p>
             </footer>
         </div>
     </form>

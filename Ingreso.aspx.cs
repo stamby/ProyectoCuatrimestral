@@ -14,23 +14,38 @@ namespace ProyectoCuatrimestral
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
         }
 
         protected void btnIngresar_Click(object sender, EventArgs e)
         {
+            Session.Clear();
+
             if (txtUsuario.Text == "")
                 return;
 
-            UsuarioNegocio usuarioNegocio = new UsuarioNegocio();
-
-            Usuario usuario = usuarioNegocio.Ingresar(
-                txtUsuario.Text, txtClave.Text);
-
-            if (usuario != null)
+            if (chkMedico.Checked)
             {
-                Session.Add("Usuario", usuario);
-                Response.Redirect("/");
+                MedicoNegocio medicoNegocio = new MedicoNegocio();
+
+                Medico medico = medicoNegocio.Ingresar(
+                    txtUsuario.Text, txtClave.Text);
+
+                if (medico != null)
+                {
+                    Session.Add("Medico", medico);
+                    Response.Redirect("/AgendaMedico");
+                }
+            } else if (chkPaciente.Checked) {
+                PacienteNegocio pacienteNegocio = new PacienteNegocio();
+
+                Paciente paciente = pacienteNegocio.Ingresar(
+                    txtUsuario.Text, txtClave.Text);
+
+                if (paciente != null)
+                {
+                    Session.Add("Paciente", paciente);
+                    Response.Redirect("/AgendaPaciente");
+                }
             }
         }
     }

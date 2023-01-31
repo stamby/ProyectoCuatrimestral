@@ -12,37 +12,26 @@ namespace ProyectoCuatrimestral
 {
     public partial class _Default : Page
     {
-        protected List<Producto> listaProductos;
+        protected List<Turno> listaProductos;
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            Usuario usuario = (Usuario)Session["Usuario"];
+            Medico medico = (Medico)Session["Medico"];
+            Paciente paciente = (Paciente)Session["Paciente"];
 
-            if (usuario == null)
+            if (medico != null)
             {
-                Response.Redirect("/Ingreso");
-                return;
+                Response.Redirect("/AgendaMedico");
+            }
+            else if (paciente != null)
+            {
+                Response.Redirect("/AgendaPaciente");
             }
             else
             {
-                if (!usuario.PermisoComprar)
-                {
-                    if (usuario.PermisoVender)
-                    {
-                        Response.Redirect("/Productos");
-                        return;
-                    }
-                    if (usuario.PermisoAdmin)
-                    {
-                        Response.Redirect("/Usuarios");
-                        return;
-                    }
-                }
+                Response.Redirect("/Ingreso");
             }
-
-            ProductoNegocio productoNegocio = new ProductoNegocio();
-
-            listaProductos = productoNegocio.Listar();
+            return;
         }
     }
 }
