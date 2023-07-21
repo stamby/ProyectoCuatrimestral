@@ -19,10 +19,9 @@ namespace ProyectoCuatrimestral
 {
     public partial class AgendaMedico : Page
     {
-        int[] turnos;
+        DateTime fechaSeleccionada;
+        // int [] turnosPorDia;
 
-        int ultimoIndice;
-        MesSeleccionado mesSeleccionado;
         protected void Page_Load(object sender, EventArgs e)
         {
             Medico medico = (Medico)Session["Medico"];
@@ -33,121 +32,97 @@ namespace ProyectoCuatrimestral
                 Response.Redirect("/Ingreso");
                 return;
             }
-
-            Poblar();
         }
-        protected void Poblar()
+        protected void Calendario_VisibleMonthChanged(
+            object sender, System.Web.UI.WebControls.DayRenderEventArgs e)
         {
-            ultimoIndice = 0;
-            
-            return;
-            if (!IsPostBack)
-            {
-                // Al cargar la página por primera vez, se muestra el presente mes
-                mesSeleccionado = MesSeleccionado.Presente;
-            }
-            else if (Calendario.VisibleDate.Year < DateTime.Now.Year)
-            {
-                mesSeleccionado = MesSeleccionado.Pasado;
-            }
-            else if (Calendario.VisibleDate.Year > DateTime.Now.Year)
-            {
-                mesSeleccionado = MesSeleccionado.Futuro;
-            }
-            else
-            {
-                if (Calendario.VisibleDate.Month < DateTime.Now.Month)
-                {
-                    mesSeleccionado = MesSeleccionado.Pasado;
-                }
-                else if (Calendario.VisibleDate.Month > DateTime.Now.Month)
-                {
-                    mesSeleccionado = MesSeleccionado.Futuro;
-                }
-                else
-                {
-                    mesSeleccionado = MesSeleccionado.Presente;
-                }
-            }
-
+        }
+        protected void Mostrar()
+        {
             TurnoNegocio turnoNegocio = new TurnoNegocio();
 
-            if (mesSeleccionado == MesSeleccionado.Pasado)
+            List<Turno> turnos = turnoNegocio.Listar(
+                fechaSeleccionada,
+                fechaSeleccionada.AddDays(1),
+                null,
+                (Medico)Session["Medico"]);
+
+            if (turnos.Count() > 0)
             {
-                return;
-            }
-            else if (mesSeleccionado == MesSeleccionado.Presente)
-            {
-                turnos = turnoNegocio.ContarPorDia(
-                    DateTime.Now.Year,
-                    DateTime.Now.Month,
-                    (Medico)Session["Medico"]);
+                lblAbajo.Visible = false;
+
+                GrillaTurnos.DataSource = turnos;
+                GrillaTurnos.DataBind();
             }
             else
             {
-                turnos = turnoNegocio.ContarPorDia(
-                    Calendario.VisibleDate.Year,
-                    Calendario.VisibleDate.Month,
-                    (Medico)Session["Medico"]);
+                lblAbajo.Text = String.Format(
+                    "No se ha agregado disponibilidad en la fecha seleccionada ({0}).",
+                    fechaSeleccionada.ToShortDateString());
             }
         }
-        protected void Calendario_VisibleMonthChanged(object sender, System.Web.UI.WebControls.DayRenderEventArgs e)
+        protected void Calendario_DayRender(
+            object sender, System.Web.UI.WebControls.DayRenderEventArgs e)
         {
-            Poblar();
-        }
-        protected void Calendario_DayRender(object sender, System.Web.UI.WebControls.DayRenderEventArgs e)
-        {
-            /*
             if (e.Day.Date >= DateTime.Today)
             {
                 e.Day.IsSelectable = true;
 
-                /*
-                 * 
-                 * Verde = hay disponibilidad
-                 * Salmon = reservado
-                 * 
-                   
+                if (e.Day.IsSelected)
+                {
+                    e.Cell.BackColor = System.Drawing.Color.DarkBlue;
+                    e.Cell.ForeColor = System.Drawing.Color.White;
 
-                if (turnos[e.Day.Date.Day] == 0)
-                {
-                    e.Cell.BackColor = System.Drawing.Color.LightGreen;
-                    e.Cell.ForeColor = System.Drawing.Color.DarkGreen;
+                    fechaSeleccionada = e.Day.Date;
+
+                    TurnoNegocio turnoNegocio = new TurnoNegocio();
+
+                    Mostrar();
                 }
-                else if (turnos[e.Day.Date.Day] == 1)
+                else
                 {
-                    e.Cell.BackColor = System.Drawing.Color.LightSalmon;
-                    e.Cell.ForeColor = System.Drawing.Color.DarkSalmon;
-                }
-                else if (turnos[e.Day.Date.Day] == 2)
-                {
-                    e.Cell.BackColor = System.Drawing.Color.Crimson;
-                    e.Cell.ForeColor = System.Drawing.Color.DarkRed;
+                    if (e.Day.IsWeekend)
+                    {
+                        e.Cell.BackColor = System.Drawing.Color.LightSalmon;
+                        e.Cell.ForeColor = System.Drawing.Color.Red;
+                    }
+                    else
+                    {
+                        e.Cell.BackColor = System.Drawing.Color.LightGreen;
+                        e.Cell.ForeColor = System.Drawing.Color.DarkGreen;
+                    }
                 }
             }
-            else
-            {
+            else {
                 e.Day.IsSelectable = false;
+                e.Cell.BackColor = System.Drawing.Color.LightGray;
+                e.Cell.ForeColor = System.Drawing.Color.DarkGray;
             }
-    */
         }
-        /*
-        protected void btnCancelar_Click(object sender, EventArgs e)
+        protected void btnVer_Click(object sender, EventArgs e)
         {
-            EspecialidadNegocio especialidadNegocio = new EspecialidadNegocio();
+            string id = ((GridViewRow)((Button)sender).NamingContainer).Cells[0].Text;
+
+            Response.Redirect("/VerTurno?id=" + id);
+
+        }
+
+        protected void btnAgregar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/AgregarDisponibilidad");
+        }
+
+        protected void btnCancelarTurno_Click(object sender, EventArgs e)
+        {
+            TurnoNegocio turnoNegocio = new TurnoNegocio();
 
             int id = Convert.ToInt32(
                 ((GridViewRow)((Button)sender).NamingContainer).Cells[0].Text);
 
-            especialidadNegocio.Borrar(id);
+            turnoNegocio.Borrar(id);
 
-            GrillaAgendaMedico.EditIndex = -1;
+            GrillaTurnos.EditIndex = -1;
             Mostrar();
-        }
-    */
-        protected void btnAgregar_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("/AgregarDisponibilidad");
         }
     }
 }

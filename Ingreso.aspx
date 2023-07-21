@@ -60,6 +60,7 @@
                 </div>
                 <hr />
                 <asp:Button CssClass="btn btn-primary" ID="btnIngresar" Text="Ingresar" OnClick="btnIngresar_Click" runat="server" />
+                <asp:Button CssClass="btn btn-secondary" ID="btnRegistrarse" Text="Registrarse" OnClick="btnRegistrarse_Click" runat="server" />
             </div>
             <hr />
             <footer>

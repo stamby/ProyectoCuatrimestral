@@ -48,5 +48,12 @@ namespace ProyectoCuatrimestral
                 }
             }
         }
+
+        protected void btnRegistrarse_Click(object sender, EventArgs e)
+        {
+            Session.Clear();
+
+            Response.Redirect("/AgregarPaciente");
+        }
     }
 }

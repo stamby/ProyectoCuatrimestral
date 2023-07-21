@@ -65,6 +65,10 @@ namespace ProyectoCuatrimestral.Negocio
             acceso.EjecutarAccion();
             acceso.CerrarConexion();
         }
+        public void Borrar(Turno turno)
+        {
+            Borrar(turno.Id);
+        }
         public Turno DesdeID(int ID)
         {
             AccesoDatos acceso = new AccesoDatos();

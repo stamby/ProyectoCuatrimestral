@@ -107,7 +107,7 @@
   <ItemGroup>
     <Content Include="AgregarDisponibilidad.aspx" />
     <Content Include="AgregarEspecialidad.aspx" />
-    <Content Include="AgregarMedico.aspx" />
+    <Content Include="AgregarPaciente.aspx" />
     <Content Include="AgendaMedico.aspx" />
     <Content Include="Ingreso.aspx" />
     <Content Include="Especialidades.aspx" />
@@ -180,12 +180,12 @@
     <Compile Include="AgregarEspecialidad.aspx.designer.cs">
       <DependentUpon>AgregarEspecialidad.aspx</DependentUpon>
     </Compile>
-    <Compile Include="AgregarMedico.aspx.cs">
-      <DependentUpon>AgregarMedico.aspx</DependentUpon>
+    <Compile Include="AgregarPaciente.aspx.cs">
+      <DependentUpon>AgregarPaciente.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="AgregarMedico.aspx.designer.cs">
-      <DependentUpon>AgregarMedico.aspx</DependentUpon>
+    <Compile Include="AgregarPaciente.aspx.designer.cs">
+      <DependentUpon>AgregarPaciente.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="Dominio\Persona.cs" />

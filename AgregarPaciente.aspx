@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Agregar un Medico" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AgregarMedico.aspx.cs" Inherits="ProyectoCuatrimestral.AgregarMedico" %>
+﻿<%@ Page Title="Agregar un Medico" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AgregarPaciente.aspx.cs" Inherits="ProyectoCuatrimestral.AgregarMedico" %>
 <asp:Content ID="AgregarMedicoContenido" ContentPlaceHolderID="MainContent" runat="server">
     <div>
         <h1><%: Title %></h1>

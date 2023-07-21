@@ -53,13 +53,14 @@
                         <% if (Session["Medico"] != null)
                             { %>
                         <li><a runat="server" href="~/AgendaMedico">Mi Agenda</a></li>
-                        <li><a runat="server" href="~/Especialidades">Especialidades</a></li>
-                        <li><a runat="server" href="~/Medicos">Agregar Médicos</a></li>
                         <%  } %>
                         <% if (Session["Paciente"] != null)
                             { %>
                         <li><a runat="server" href="~/AgendaPaciente">Solicitar un Turno</a></li>
                         <%  } %>
+<!--                        <li><a runat="server" href="~/Especialidades">Especialidades</a></li>
+                        <li><a runat="server" href="~/Medicos">Agregar Médicos</a></li>
+                        -->
                         <li style="position: absolute; right: 0.6em; top: 0.6em;">
                             <asp:Button CssClass="btn btn-danger" ID="btnSalir" OnClick="btnSalir_Click" Text="Salir" runat="server" />
                         </li>
