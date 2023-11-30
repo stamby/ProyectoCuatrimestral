@@ -1,0 +1,53 @@
+﻿<%@ Page Title="Confirmar Reserva" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ConfirmarReserva.aspx.cs" Inherits="ProyectoCuatrimestral.ConfirmarReserva" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+    <div>
+        <h1><%: Title %></h1>
+    </div>
+
+    <hr />
+
+    <div>
+        <div><p>Confirmo que deseo presentarme en el área de <%= turno.Medico.Especialidad.Nombre.ToUpper() %></p></div>
+        <div>
+            <asp:Label Text="ID: " runat="server" />
+            <asp:Label ID="lblID" runat="server" />
+        </div>
+        <br />
+        <div>
+            <asp:Label Text="Especialidad:" runat="server" />
+            <asp:Label ID="lblEspecialidad" runat="server" />
+        </div>
+        <br />
+        <div>
+            <asp:Label Text="Profesional:" runat="server" />
+            <asp:Label ID="lblMedico" runat="server" />
+        </div>
+        <br />
+        <div>
+            <asp:Label Text="De:" runat="server" />
+            <asp:Label ID="lblHoraDesde" runat="server" />
+        </div>
+        <br />
+        <div>
+            <asp:Label Text="A:" runat="server" />
+            <asp:Label ID="lblHoraHasta" runat="server" />
+        </div>
+        <br />
+        <div>
+            <asp:Label Text="Paciente:" runat="server" />
+            <asp:Label ID="lblPaciente" runat="server" />
+        </div>
+        <br />
+        <div>
+            <asp:Label Text="Obra Social:" runat="server" />
+            <asp:Label ID="lblObraSocial" runat="server" />
+        </div>
+    </div>
+
+    <hr />
+
+    <div>
+        <asp:Button CssClass="btn btn-primary" Text="Confirmar" ID="btnConfirmar" OnClick="btnConfirmar_Click" runat="server" />
+    </div>
+</asp:Content>

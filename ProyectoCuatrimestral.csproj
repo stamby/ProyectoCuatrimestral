@@ -105,9 +105,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AgendaPaciente.aspx" />
+    <Content Include="AgregarMedico.aspx" />
+    <Content Include="ConfirmarReserva.aspx" />
+    <Content Include="ModificarMedico.aspx" />
+    <Content Include="Registro.aspx" />
+    <Content Include="ReservarTurno.aspx" />
     <Content Include="AgregarDisponibilidad.aspx" />
     <Content Include="AgregarEspecialidad.aspx" />
-    <Content Include="AgregarPaciente.aspx" />
     <Content Include="AgendaMedico.aspx" />
     <Content Include="Ingreso.aspx" />
     <Content Include="Especialidades.aspx" />
@@ -166,6 +171,48 @@
     <Content Include="Site.Mobile.Master" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AgendaPaciente.aspx.cs">
+      <DependentUpon>AgendaPaciente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AgendaPaciente.aspx.designer.cs">
+      <DependentUpon>AgendaPaciente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AgregarMedico.aspx.cs">
+      <DependentUpon>AgregarMedico.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AgregarMedico.aspx.designer.cs">
+      <DependentUpon>AgregarMedico.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ConfirmarReserva.aspx.cs">
+      <DependentUpon>ConfirmarReserva.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ConfirmarReserva.aspx.designer.cs">
+      <DependentUpon>ConfirmarReserva.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ModificarMedico.aspx.cs">
+      <DependentUpon>ModificarMedico.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ModificarMedico.aspx.designer.cs">
+      <DependentUpon>ModificarMedico.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Registro.aspx.cs">
+      <DependentUpon>Registro.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Registro.aspx.designer.cs">
+      <DependentUpon>Registro.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ReservarTurno.aspx.cs">
+      <DependentUpon>ReservarTurno.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReservarTurno.aspx.designer.cs">
+      <DependentUpon>ReservarTurno.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AgregarDisponibilidad.aspx.cs">
       <DependentUpon>AgregarDisponibilidad.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -179,13 +226,6 @@
     </Compile>
     <Compile Include="AgregarEspecialidad.aspx.designer.cs">
       <DependentUpon>AgregarEspecialidad.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="AgregarPaciente.aspx.cs">
-      <DependentUpon>AgregarPaciente.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="AgregarPaciente.aspx.designer.cs">
-      <DependentUpon>AgregarPaciente.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="Dominio\Persona.cs" />

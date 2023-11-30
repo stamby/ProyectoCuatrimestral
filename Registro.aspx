@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Ingreso.aspx.cs" Inherits="ProyectoCuatrimestral.Ingreso" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Registro.aspx.cs" Inherits="ProyectoCuatrimestral.Registro" %>
 
 <!DOCTYPE html>
 
@@ -6,7 +6,7 @@
 <head runat="server">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ingresar - Turnos para Atención</title>
+    <title>Registro - Turnos para Atención</title>
 
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
@@ -39,10 +39,25 @@
         </asp:ScriptManager>
         <div class="container body-content">
             <div>
-                <h1>Ingresar al Sistema</h1>
+                <h1>Registrarse como Paciente</h1>
             </div>
             <hr />
             <div>
+                <div>
+                    <asp:Label Text="Nombre:" runat="server" />
+                    <asp:TextBox ID="txtNombre" runat="server" />
+                </div>
+                <br />
+                <div>
+                    <asp:Label Text="Apellido:" runat="server" />
+                    <asp:TextBox ID="txtApellido" runat="server" />
+                </div>
+                <br />
+                <div>
+                    <asp:Label Text="Obra Social:" runat="server" />
+                    <asp:TextBox ID="txtObraSocial" runat="server" />
+                </div>
+                <br />
                 <div>
                     <asp:Label Text="E-Mail:" runat="server" />
                     <asp:TextBox ID="txtUsuario" runat="server" />
@@ -53,14 +68,8 @@
                     <asp:TextBox ID="txtClave" TextMode="Password" runat="server" />
                 </div>
                 <br />
-                <div>
-                    <asp:RadioButton ID="chkPaciente" Text="Soy Paciente" Checked="True" GroupName="RadioGroup1" runat="server" />
-                    <br />
-                    <asp:RadioButton ID="chkMedico" Text="Soy Profesional" GroupName="RadioGroup1" runat="server" />
-                </div>
                 <hr />
-                <asp:Button CssClass="btn btn-primary" ID="btnIngresar" Text="Ingresar" OnClick="btnIngresar_Click" runat="server" />
-                <asp:Button CssClass="btn btn-secondary" ID="btnRegistrarse" Text="Registrarse como paciente" OnClick="btnRegistrarse_Click" runat="server" />
+                <asp:Button CssClass="btn btn-secondary" ID="btnRegistrarse" Text="Registrarse" OnClick="btnRegistrarse_Click" runat="server" />
             </div>
             <hr />
             <footer>

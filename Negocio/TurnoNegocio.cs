@@ -100,31 +100,43 @@ namespace ProyectoCuatrimestral.Negocio
             turno.Id = ID;
             turno.HoraDesde = (DateTime)acceso.Lector["HoraDesde"];
             turno.HoraHasta = (DateTime)acceso.Lector["HoraHasta"];
-            if (acceso.Lector["IdMedico"] != null)
+            if (!(acceso.Lector["IdMedico"] is DBNull))
             {
+                MedicoNegocio medicoNegocio = new MedicoNegocio();
+                turno.Medico = medicoNegocio.DesdeID(Convert.ToInt32(acceso.Lector["IdMedico"]));
+                /*
                 turno.Medico = new Medico();
                 turno.Medico.Id = Convert.ToInt32(acceso.Lector["IdMedico"]);
                 turno.Medico.Nombre = (string)acceso.Lector["NombreMedico"];
                 turno.Medico.Apellido = (string)acceso.Lector["ApellidoMedico"];
                 turno.Medico.Email = (string)acceso.Lector["EmailMedico"];
+                
                 if (acceso.Lector["IdEspecialidad"] != null)
                 {
+                    turno.Medico.Especialidad = new Especialidad();
                     turno.Medico.Especialidad.Id = Convert.ToInt32(acceso.Lector["IdEspecialidad"]);
                     turno.Medico.Especialidad.Nombre = (string)acceso.Lector["NombreEspecialidad"];
                 }
+                */
             }
             else
             {
                 turno.Medico = null;
             }
-            if (acceso.Lector["IdPaciente"] != null)
+            if (!(acceso.Lector["IdPaciente"] is DBNull))
             {
+                PacienteNegocio pacienteNegocio = new PacienteNegocio();
+
+                turno.Paciente = pacienteNegocio.DesdeID(Convert.ToInt32(acceso.Lector["IdPaciente"]));
+
+                /*
                 turno.Paciente = new Paciente();
                 turno.Paciente.Id = Convert.ToInt32(acceso.Lector["IdPaciente"]);
                 turno.Paciente.Nombre = (string)acceso.Lector["NombrePaciente"];
                 turno.Paciente.Apellido = (string)acceso.Lector["ApellidoPaciente"];
                 turno.Paciente.Email = (string)acceso.Lector["EmailPaciente"];
                 turno.Paciente.ObraSocial = (string)acceso.Lector["ObraSocialPaciente"];
+                */
             }
             else
             {
@@ -141,7 +153,7 @@ namespace ProyectoCuatrimestral.Negocio
          * Cuando el paciente no es nulo, busca los turnos de un paciente en particular.
          * 
          */
-        public List<Turno> Listar(
+                public List<Turno> Listar(
                 DateTime hora_desde,
                 DateTime hora_hasta,
                 Especialidad especialidad=null,
@@ -169,8 +181,8 @@ namespace ProyectoCuatrimestral.Negocio
                 + (medico == null ? "" : " and m.id = " + medico.Id)
                 + (especialidad == null ? "" : " and m.especialidad_id = " + especialidad.Id)
                 + (paciente == null ? "" : " and t.paciente_id = " + paciente.Id)
-                + " order by t.hora_desde, m.apellido, m.nombre, "
-                + (paciente == null ? "p.apellido, p.nombre" : "m.apellido, m.nombre")
+                + " order by t.hora_desde, m.apellido, m.nombre"
+                + (paciente == null ? ", p.apellido, p.nombre" : "")
                 + ";");
 
             acceso.EjecutarLectura();

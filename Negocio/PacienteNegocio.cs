@@ -10,17 +10,20 @@ namespace ProyectoCuatrimestral.Negocio
         public Paciente Nuevo(
             string Nombre,
             string Apellido,
+            string ObraSocial,
             string Email,
-            string ObraSocial)
+            string Clave)
         {
             AccesoDatos acceso = new AccesoDatos();
             acceso.SetParametros("@Nombre", Nombre);
             acceso.SetParametros("@Apellido", Apellido);
-            acceso.SetParametros("@Email", Email);
             acceso.SetParametros("@ObraSocial", ObraSocial);
+            acceso.SetParametros("@Email", Email);
+            acceso.SetParametros("@Clave", Clave);
+
             acceso.SetConsulta(
-                "insert into PACIENTES (nombre, apellido, email, obra_social) values ("
-                + "@Nombre, @Apellido, @Email, @ObraSocial);");
+                "insert into PACIENTES (nombre, apellido, email, obra_social, clave) values ("
+                + "@Nombre, @Apellido, @Email, @ObraSocial, @Clave);");
 
             int Id = acceso.EjecutarEscalar();
 

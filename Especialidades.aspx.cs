@@ -14,6 +14,15 @@ namespace ProyectoCuatrimestral
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            Medico medico = (Medico)Session["Medico"];
+
+            if (medico == null || ! medico.EsAdministrador())
+            {
+                Session.Clear();
+                Response.Redirect("/Ingreso");
+                return;
+            }
+
             if (!IsPostBack)
                 Mostrar();
         }

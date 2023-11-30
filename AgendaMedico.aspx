@@ -23,16 +23,16 @@
     <hr />
 
     <div>
-        <asp:GridView ID="GrillaTurnos" CssClass="table" runat="server" AutoGenerateColumns="false" CellPadding="6">
+        <asp:GridView ID="GrillaTurnos" CssClass="table" runat="server" AutoGenerateColumns="false" CellPadding="6" EnableViewState="true" AutoPostBack="true" OnRowCommand="GrillaTurnos_RowCommand">
             <Columns>
                 <asp:BoundField DataField="Id" HeaderText="Identificación" />
-                <asp:BoundField DataField="HoraDesde" HeaderText="De" />
-                <asp:BoundField DataField="HoraHasta" HeaderText="A" />
+                <asp:BoundField DataField="HoraDesde" HeaderText="De" DataFormatString="{0:dd/MM/yyyy HH:mm}" />
+                <asp:BoundField DataField="HoraHasta" HeaderText="A" DataFormatString="{0:dd/MM/yyyy HH:mm}" />
                 <asp:BoundField DataField="Paciente" HeaderText="Paciente" />
                 <asp:TemplateField HeaderText="Opciones">
                     <ItemTemplate>
-                        <asp:Button CssClass="btn btn-secondary" ID="btnVer" Text="Ver detalles" OnClick="btnVer_Click" runat="server" />
-                        <asp:Button CssClass="btn btn-danger" ID="btnCancelarTurno" Text="Cancelar turno" OnClick="btnCancelarTurno_Click" runat="server" />
+                        <asp:Button CssClass="btn btn-secondary" ID="btnVer" Text="Ver detalles" CommandName="VerTurno" runat="server" />
+                        <asp:Button CssClass="btn btn-danger" ID="btnCancelarTurno" Text="Cancelar turno" CommandName="CancelarTurno" runat="server" />
                     </ItemTemplate>
                 </asp:TemplateField>
             </Columns>

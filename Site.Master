@@ -50,17 +50,20 @@
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <% if (Session["Medico"] != null)
+                        <% if (es_medico)
                             { %>
                         <li><a runat="server" href="~/AgendaMedico">Mi Agenda</a></li>
                         <%  } %>
-                        <% if (Session["Paciente"] != null)
+                        <% if (es_paciente)
                             { %>
-                        <li><a runat="server" href="~/AgendaPaciente">Solicitar un Turno</a></li>
+                        <li><a runat="server" href="~/AgendaPaciente">Mis Turnos</a></li>
                         <%  } %>
-<!--                        <li><a runat="server" href="~/Especialidades">Especialidades</a></li>
-                        <li><a runat="server" href="~/Medicos">Agregar Médicos</a></li>
-                        -->
+                        <% if (es_administrador)
+                            { %>
+                        <li><a runat="server" href="~/Medicos">Médicos y Administradores</a></li>
+                        <li><a runat="server" href="~/Especialidades">Especialidades</a></li>
+                        <%  } %>
+
                         <li style="position: absolute; right: 0.6em; top: 0.6em;">
                             <asp:Button CssClass="btn btn-danger" ID="btnSalir" OnClick="btnSalir_Click" Text="Salir" runat="server" />
                         </li>

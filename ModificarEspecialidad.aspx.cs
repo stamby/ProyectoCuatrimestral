@@ -16,7 +16,7 @@ namespace ProyectoCuatrimestral
         {
             Medico medico = (Medico)Session["Medico"];
 
-            if (medico == null)
+            if (medico == null || !medico.EsAdministrador())
             {
                 Session.Clear();
                 Response.Redirect("/Ingreso");

@@ -99,30 +99,32 @@ namespace ProyectoCuatrimestral
                 e.Cell.ForeColor = System.Drawing.Color.DarkGray;
             }
         }
-        protected void btnVer_Click(object sender, EventArgs e)
+        protected void GrillaTurnos_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            string id = ((GridViewRow)((Button)sender).NamingContainer).Cells[0].Text;
+            if (e.CommandName == "VerTurno")
+            {
+                int index = Convert.ToInt32(e.CommandArgument);
+                int id = Convert.ToInt32(GrillaTurnos.DataKeys[index].Value);
+                Response.Redirect("/VerTurno?id=" + id);
+            }
+            else if (e.CommandName == "CancelarTurno")
+            {
+                TurnoNegocio turnoNegocio = new TurnoNegocio();
 
-            Response.Redirect("/VerTurno?id=" + id);
+                int indice = Convert.ToInt32(e.CommandArgument);
+                int id = Convert.ToInt32(GrillaTurnos.DataKeys[indice].Value);
 
+                turnoNegocio.Borrar(id);
+
+                GrillaTurnos.EditIndex = -1;
+                Mostrar();
+            }
         }
+
 
         protected void btnAgregar_Click(object sender, EventArgs e)
         {
             Response.Redirect("/AgregarDisponibilidad");
-        }
-
-        protected void btnCancelarTurno_Click(object sender, EventArgs e)
-        {
-            TurnoNegocio turnoNegocio = new TurnoNegocio();
-
-            int id = Convert.ToInt32(
-                ((GridViewRow)((Button)sender).NamingContainer).Cells[0].Text);
-
-            turnoNegocio.Borrar(id);
-
-            GrillaTurnos.EditIndex = -1;
-            Mostrar();
         }
     }
 }

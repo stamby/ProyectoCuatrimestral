@@ -12,16 +12,16 @@ namespace ProyectoCuatrimestral.Negocio
             string Apellido,
             string Email,
             string Clave,
-            string Especialidad)
+            int especialidadId)
         {
             AccesoDatos acceso = new AccesoDatos();
             acceso.SetParametros("@Nombre", Nombre);
             acceso.SetParametros("@Apellido", Apellido);
             acceso.SetParametros("@Email", Email);
             acceso.SetParametros("@Clave", Clave);
-            acceso.SetParametros("@Especialidad", Especialidad);
+            acceso.SetParametros("@Especialidad", especialidadId);
             acceso.SetConsulta(
-                "insert into MEDICOS (nombre, apellido, email, clave, especialidad) values ("
+                "insert into MEDICOS (nombre, apellido, email, clave, especialidad_id) values ("
                 + "@Nombre, @Apellido, @Email, @Clave, @Especialidad);");
 
             int Id = acceso.EjecutarEscalar();
@@ -42,11 +42,11 @@ namespace ProyectoCuatrimestral.Negocio
             acceso.SetParametros("@Apellido", medico.Apellido);
             acceso.SetParametros("@Email", medico.Email);
             acceso.SetParametros("@Clave", medico.Clave);
-            acceso.SetParametros("@Especialidad", medico.Especialidad);
+            acceso.SetParametros("@Especialidad", medico.Especialidad.Id);
 
             acceso.SetConsulta(
                 "update MEDICOS set nombre = @Nombre, apellido = @Apellido, "
-                + "email = @Email, clave = @Clave, especialidad = @Especialidad "
+                + "email = @Email, clave = @Clave, especialidad_id = @Especialidad "
                 + "where id = @ID;");
 
             acceso.EjecutarAccion();
@@ -65,7 +65,10 @@ namespace ProyectoCuatrimestral.Negocio
         {
             AccesoDatos acceso = new AccesoDatos();
             acceso.SetConsulta(
-                "select nombre, apellido, email, clave, especialidad from MEDICOS where id = " +
+                "select m.nombre medico_nombre, m.apellido medico_apellido, m.email medico_email, " +
+                "clave medico_clave, especialidad_id especialidad_id, e.nombre especialidad_nombre from MEDICOS m " +
+                "left join ESPECIALIDADES e on m.especialidad_id = e.id " +
+                "where m.id = " +
                 ID + ";");
 
             acceso.EjecutarLectura();
@@ -78,11 +81,13 @@ namespace ProyectoCuatrimestral.Negocio
 
             if (correcto)
             {
-                medico.Nombre = (string)acceso.Lector["nombre"];
-                medico.Apellido = (string)acceso.Lector["apellido"];
-                medico.Email = (string)acceso.Lector["email"];
-                medico.Clave = (string)acceso.Lector["clave"];
-                medico.Especialidad = (Especialidad)acceso.Lector["especialidad"];
+                medico.Nombre = (string)acceso.Lector["medico_nombre"];
+                medico.Apellido = (string)acceso.Lector["medico_apellido"];
+                medico.Email = (string)acceso.Lector["medico_email"];
+                medico.Clave = (string)acceso.Lector["medico_clave"];
+                medico.Especialidad = new Especialidad();
+                medico.Especialidad.Id = Convert.ToInt32(acceso.Lector["especialidad_id"]);
+                medico.Especialidad.Nombre = (string)acceso.Lector["especialidad_nombre"];
 
                 acceso.CerrarConexion();
             }
@@ -100,11 +105,13 @@ namespace ProyectoCuatrimestral.Negocio
             AccesoDatos acceso = new AccesoDatos();
             
             acceso.SetConsulta(
-                "select id, nombre, apellido, email, clave, especialidad from MEDICOS;");
+                "select m.id, m.nombre, m.apellido, m.email, m.clave, m.especialidad_id, "
+                + "e.nombre AS especialidad_nombre "
+                + "from MEDICOS m left join ESPECIALIDADES e on m.especialidad_id = e.id;");
+
             acceso.EjecutarLectura();
 
             Medico medico;
-            EspecialidadNegocio especialidadNegocio = new EspecialidadNegocio();
 
             while (acceso.Lector.Read())
             {
@@ -114,10 +121,12 @@ namespace ProyectoCuatrimestral.Negocio
                 medico.Apellido = (string)acceso.Lector["apellido"];
                 medico.Email = (string)acceso.Lector["email"];
                 medico.Clave = (string)acceso.Lector["clave"];
-                medico.Especialidad = new Especialidad(
-                    Convert.ToInt32(acceso.Lector["especialidad"]),
-                    especialidadNegocio.DesdeID(
-                        Convert.ToInt32(acceso.Lector["especialidad"])).ToString());
+                medico.Especialidad = new Especialidad
+                {
+                    Id = Convert.ToInt32(acceso.Lector["especialidad_id"]),
+                    Nombre = (string)acceso.Lector["especialidad_nombre"]
+                };
+
 
                 lista.Add(medico);
             }
@@ -134,8 +143,8 @@ namespace ProyectoCuatrimestral.Negocio
             acceso.SetParametros("@Clave", strClave);
 
             acceso.SetConsulta(
-                "select m.id id, m.nombre nombre, m.apellido apellido, m.email email, "
-                + "clave, m.especialidad_id EspecialidadId, e.nombre EspecialidadNombre "
+                "select m.id MedicoID, m.nombre MedicoNombre, m.apellido apellido, m.email email, "
+                + "m.clave clave, m.especialidad_id EspecialidadID, e.nombre EspecialidadNombre "
                 + "from MEDICOS m "
                 + "left join ESPECIALIDADES e on m.especialidad_id = e.id "
                 + "where email = @Email and clave = @Clave;");
@@ -146,13 +155,13 @@ namespace ProyectoCuatrimestral.Negocio
 
             if (acceso.Lector.Read())
             {
-                medico.Id = Convert.ToInt32(acceso.Lector["id"]);
-                medico.Nombre = (string)acceso.Lector["nombre"];
+                medico.Id = Convert.ToInt32(acceso.Lector["MedicoID"]);
+                medico.Nombre = (string)acceso.Lector["MedicoNombre"];
                 medico.Apellido = (string)acceso.Lector["apellido"];
                 medico.Email = (string)acceso.Lector["email"];
                 medico.Clave = (string)acceso.Lector["clave"];
                 medico.Especialidad = new Especialidad();
-                medico.Especialidad.Id = Convert.ToInt32(acceso.Lector["EspecialidadId"]);
+                medico.Especialidad.Id = Convert.ToInt32(acceso.Lector["EspecialidadID"]);
                 medico.Especialidad.Nombre = (string)acceso.Lector["EspecialidadNombre"];
 
                 acceso.CerrarConexion();

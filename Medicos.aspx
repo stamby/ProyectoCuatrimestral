@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Medicos" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Medicos.aspx.cs" Inherits="ProyectoCuatrimestral.Medicos" %>
+﻿<%@ Page Title="Médicos y Administradores" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Medicos.aspx.cs" Inherits="ProyectoCuatrimestral.Medicos" %>
 <asp:Content ID="MedicosContenido" ContentPlaceHolderID="MainContent" runat="server">
     <div>
         <h1><%: Title %></h1>
@@ -15,9 +15,9 @@
     <asp:GridView ID="MedicosGrilla" CssClass="table" runat="server" AutoGenerateColumns="false" CellPadding="6">
         <Columns>
             <asp:BoundField DataField="Id" HeaderText="ID" />
-            <asp:BoundField DataField="Apellido" HeaderText="Nombre" />
+            <asp:BoundField DataField="Apellido" HeaderText="Apellido" />
             <asp:BoundField DataField="Nombre" HeaderText="Nombre" />
-            <asp:BoundField DataField="Especialidad" HeaderText="Nombre" />
+            <asp:BoundField DataField="Especialidad" HeaderText="Especialidad" />
             <asp:TemplateField HeaderText="Opciones">
                 <ItemTemplate>
                     <asp:Button CssClass="btn btn-secondary" CommandName="Modificar" ID="btnModificar" OnClick="btnModificar_Click" Text="Modificar" runat="server" />

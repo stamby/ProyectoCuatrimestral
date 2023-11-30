@@ -53,7 +53,7 @@ namespace ProyectoCuatrimestral
         {
             Session.Clear();
 
-            Response.Redirect("/AgregarPaciente");
+            Response.Redirect("/Registro");
         }
     }
 }
