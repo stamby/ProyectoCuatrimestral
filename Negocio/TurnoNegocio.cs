@@ -7,13 +7,6 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public enum TipoDia
-{
-    Vacio = 0,
-    Disponible = 1,
-    Reservado = 2
-}
-
 namespace ProyectoCuatrimestral.Negocio
 {
     public class TurnoNegocio

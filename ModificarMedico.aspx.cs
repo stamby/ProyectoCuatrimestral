@@ -73,6 +73,7 @@ namespace ProyectoCuatrimestral
 
             medico.Id = Convert.ToInt32(lblID.Text);
             medico.Nombre = txtNombre.Text;
+            medico.Apellido = txtApellido.Text;
             medico.Email = txtUsuario.Text;
             medico.Clave = txtClave.Text;
 
