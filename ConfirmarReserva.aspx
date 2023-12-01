@@ -8,16 +8,7 @@
     <hr />
 
     <div>
-        <div><p>Confirmo que deseo presentarme en el área de <%= turno.Medico.Especialidad.Nombre.ToUpper() %></p></div>
-        <div>
-            <asp:Label Text="ID: " runat="server" />
-            <asp:Label ID="lblID" runat="server" />
-        </div>
-        <br />
-        <div>
-            <asp:Label Text="Especialidad:" runat="server" />
-            <asp:Label ID="lblEspecialidad" runat="server" />
-        </div>
+        <div><p>Confirmo que deseo presentarme en el área de <strong><%= turno.Medico.Especialidad.Nombre.ToUpper() %>:</strong></p></div>
         <br />
         <div>
             <asp:Label Text="Profesional:" runat="server" />
@@ -49,5 +40,6 @@
 
     <div>
         <asp:Button CssClass="btn btn-primary" Text="Confirmar" ID="btnConfirmar" OnClick="btnConfirmar_Click" runat="server" />
+        <asp:Button CssClass="btn btn-secondary" Text="Volver" ID="btnVolver" OnClick="btnVolver_Click" runat="server" />
     </div>
 </asp:Content>

@@ -50,18 +50,25 @@ namespace ProyectoCuatrimestral
                 Response.Redirect("/ReservarTurno");
             }
 
-            lblID.Text = turno.Id.ToString();
-            lblEspecialidad.Text = turno.Medico.Especialidad.Nombre;
             lblMedico.Text = turno.Medico.ToString();
-            lblHoraDesde.Text = turno.HoraDesde.ToLongDateString();
-            lblHoraHasta.Text = turno.HoraHasta.ToLongDateString();
-            lblPaciente.Text = turno.Paciente.ToString();
-            lblObraSocial.Text = turno.Paciente.ToString();
+            lblHoraDesde.Text = turno.HoraDesde.ToString("dd/MM/yyyy HH:mm");
+            lblHoraHasta.Text = turno.HoraHasta.ToString("dd/MM/yyyy HH:mm");
+            lblPaciente.Text = ((Paciente)Session["Paciente"]).ToString();
+            lblObraSocial.Text = ((Paciente)Session["Paciente"]).ObraSocial;
         }
 
         protected void btnConfirmar_Click(object sender, EventArgs e)
         {
+            TurnoNegocio turnoNegocio = new TurnoNegocio();
 
+            turnoNegocio.Reservar(Convert.ToInt32(Request.QueryString["id"]), ((Paciente)Session["Paciente"]).Id);
+            
+            Response.Redirect("/AgendaPaciente");
+        }
+
+        protected void btnVolver_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/ReservarTurno");
         }
     }
 

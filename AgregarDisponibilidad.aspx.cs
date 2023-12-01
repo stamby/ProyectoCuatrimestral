@@ -13,7 +13,7 @@ namespace ProyectoCuatrimestral
 {
     public partial class AgregarDisponibilidad : System.Web.UI.Page
     {
-        IEnumerable<DateTime> BuscarDiasEntre(DateTime primero, DateTime ultimo)
+        IEnumerable<DateTime> BuscarDiasEntre(DateTime primero, DateTime ultimo, DayOfWeek[] diasDeLaSemana)
         {
             for (DateTime i = primero; i < ultimo; i = i.AddDays(1))
             {
@@ -54,17 +54,16 @@ namespace ProyectoCuatrimestral
 
             var dias = BuscarDiasEntre(
                 DateTime.ParseExact(txtDiaDesde.Text, "yyyy-MM-dd", null),
-                DateTime.ParseExact(txtDiaHasta.Text, "yyyy-MM-dd", null).AddDays(1)
-                //.Where(d => diasDeLaSemana.Contains(d.DayOfWeek)
-                );
+                DateTime.ParseExact(txtDiaHasta.Text, "yyyy-MM-dd", null).AddDays(1),
+                diasDeLaSemana);
 
             DateTime horaDesde = DateTime.ParseExact(txtHoraDesde.Text, "HH:mm", null);
             DateTime horaHasta = DateTime.ParseExact(txtHoraHasta.Text, "HH:mm", null);
 
+            TurnoNegocio turnoNegocio = new TurnoNegocio();
+
             foreach (var dia in dias)
             {
-                TurnoNegocio turnoNegocio = new TurnoNegocio();
-
                 turnoNegocio.Nuevo(
                     DateTime.ParseExact(
                         dia.Date.ToString("yyyy-MM-dd ") + horaDesde.ToString("HH:mm"),

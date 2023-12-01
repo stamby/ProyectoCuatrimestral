@@ -12,9 +12,6 @@
         <asp:DropDownList ID="ddlMedicos" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlMedicos_SelectedIndexChanged">
             <asp:ListItem Value="0">Todos</asp:ListItem>
         </asp:DropDownList>
-    </div>
-
-    <div>
         <asp:Label Text="Filtrar por Especialidad:" runat="server" />
         <asp:DropDownList ID="ddlEspecialidades" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlEspecialidades_SelectedIndexChanged">
             <asp:ListItem Value="0">Todas</asp:ListItem>
@@ -27,9 +24,9 @@
         <Columns>
             <asp:BoundField DataField="Id" HeaderText="ID" />
             <asp:BoundField DataField="Medico.Especialidad.Nombre" HeaderText="Especialidad" />
+            <asp:BoundField DataField="Medico" HeaderText="Médico" />
             <asp:BoundField DataField="HoraDesde" HeaderText="De" DataFormatString="{0:dd/MM/yyyy HH:mm}" />
             <asp:BoundField DataField="HoraHasta" HeaderText="A" DataFormatString="{0:dd/MM/yyyy HH:mm}" />
-            <asp:BoundField DataField="Medico" HeaderText="Médico" />
             <asp:TemplateField HeaderText="Opciones">
                 <ItemTemplate>
                     <asp:Button CssClass="btn btn-primary" ID="btnReservar" OnClick="btnReservar_Click" Text="Reservar" runat="server" />

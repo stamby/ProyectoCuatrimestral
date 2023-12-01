@@ -20,7 +20,7 @@
             <asp:BoundField DataField="Id" HeaderText="ID" />
             <asp:BoundField DataField="HoraDesde" HeaderText="De" />
             <asp:BoundField DataField="HoraHasta" HeaderText="A" />
-            <asp:BoundField DataField="Medico.Nombre" HeaderText="Profesional" />
+            <asp:BoundField DataField="Medico" HeaderText="Profesional" />
             <asp:BoundField DataField="Medico.Especialidad" HeaderText="Especialidad" />
 
             <asp:TemplateField HeaderText="Opciones">

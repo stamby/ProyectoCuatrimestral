@@ -6,7 +6,7 @@
     
     <hr />
 
-    <div>
+    <!--<div>
         <asp:Label Text="Agregar 1 (un) turno:" runat="server" />
         <asp:CheckBox ID="chkDomingo" Text="Domingos" Checked="true" runat="server" />
         <asp:CheckBox ID="chkLunes" Text="Lunes" Checked="true" runat="server" />
@@ -17,7 +17,7 @@
         <asp:CheckBox ID="chkSabado" Text="Sábados" Checked="true" runat="server" />
     </div>
     
-    <br />
+    <br />-->
 
     <div>
         <asp:Label Text="Entre los días:" runat="server" />

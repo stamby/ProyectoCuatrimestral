@@ -59,7 +59,7 @@
                 </div>
                 <br />
                 <div>
-                    <asp:Label Text="E-Mail:" runat="server" />
+                    <asp:Label Text="Usuario:" runat="server" />
                     <asp:TextBox ID="txtUsuario" runat="server" />
                 </div>
                 <br />

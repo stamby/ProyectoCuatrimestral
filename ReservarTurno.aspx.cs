@@ -41,6 +41,7 @@ namespace ProyectoCuatrimestral
             ddlMedicos.DataSource = listaMedicos;
             ddlMedicos.DataValueField = "Id";
             ddlMedicos.DataTextField = "Apellido";
+
             ddlMedicos.DataBind();
 
             ddlMedicos.Items.Insert(0, new ListItem("Todos", "0"));
@@ -62,7 +63,7 @@ namespace ProyectoCuatrimestral
         private void CargarTurnos()
         {
             DateTime hora_desde = DateTime.Now;
-            DateTime hora_hasta = DateTime.Now.AddDays(7);
+            DateTime hora_hasta = DateTime.Now.AddDays(30);
 
             int medicoId = Convert.ToInt32(ddlMedicos.SelectedValue);
             int especialidadId = Convert.ToInt32(ddlEspecialidades.SelectedValue);
@@ -83,7 +84,8 @@ namespace ProyectoCuatrimestral
             }
 
             TurnoNegocio turnoNegocio = new TurnoNegocio();
-            listaTurnos = turnoNegocio.Listar(hora_desde, hora_hasta, especialidad, medico);
+            listaTurnos = turnoNegocio.Listar(
+                hora_desde, hora_hasta, especialidad, medico, solo_vacantes: true);
 
             GridView1.DataSource = listaTurnos;
             GridView1.DataBind();
@@ -103,7 +105,7 @@ namespace ProyectoCuatrimestral
         {
             string turnoId = ((GridViewRow)((Button)sender).NamingContainer).Cells[0].Text;
             
-            Response.Redirect("/ConfirmarReserva?turnoId=" + turnoId);
+            Response.Redirect("/ConfirmarReserva?id=" + turnoId);
         }
     }
 }

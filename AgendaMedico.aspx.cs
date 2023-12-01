@@ -33,10 +33,10 @@ namespace ProyectoCuatrimestral
                 return;
             }
         }
-        protected void Calendario_VisibleMonthChanged(
+        /* protected void Calendario_VisibleMonthChanged(
             object sender, System.Web.UI.WebControls.DayRenderEventArgs e)
         {
-        }
+        } */
         protected void Mostrar()
         {
             TurnoNegocio turnoNegocio = new TurnoNegocio();
@@ -101,13 +101,7 @@ namespace ProyectoCuatrimestral
         }
         protected void GrillaTurnos_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            if (e.CommandName == "VerTurno")
-            {
-                int index = Convert.ToInt32(e.CommandArgument);
-                int id = Convert.ToInt32(GrillaTurnos.DataKeys[index].Value);
-                Response.Redirect("/VerTurno?id=" + id);
-            }
-            else if (e.CommandName == "CancelarTurno")
+            if (e.CommandName == "CancelarTurno")
             {
                 TurnoNegocio turnoNegocio = new TurnoNegocio();
 

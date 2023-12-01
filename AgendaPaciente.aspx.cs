@@ -49,7 +49,7 @@ namespace ProyectoCuatrimestral
             int id = Convert.ToInt32(
                 ((GridViewRow)((Button)sender).NamingContainer).Cells[0].Text);
 
-            turnoNegocio.Borrar(id);
+            turnoNegocio.CancelarReserva(id);
 
             GrillaAgendaPaciente.EditIndex = -1;
             Mostrar();

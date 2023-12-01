@@ -28,13 +28,8 @@
                 <asp:BoundField DataField="Id" HeaderText="Identificación" />
                 <asp:BoundField DataField="HoraDesde" HeaderText="De" DataFormatString="{0:dd/MM/yyyy HH:mm}" />
                 <asp:BoundField DataField="HoraHasta" HeaderText="A" DataFormatString="{0:dd/MM/yyyy HH:mm}" />
-                <asp:BoundField DataField="Paciente" HeaderText="Paciente" />
-                <asp:TemplateField HeaderText="Opciones">
-                    <ItemTemplate>
-                        <asp:Button CssClass="btn btn-secondary" ID="btnVer" Text="Ver detalles" CommandName="VerTurno" runat="server" />
-                        <asp:Button CssClass="btn btn-danger" ID="btnCancelarTurno" Text="Cancelar turno" CommandName="CancelarTurno" runat="server" />
-                    </ItemTemplate>
-                </asp:TemplateField>
+                <asp:BoundField DataField="Paciente" HeaderText="Paciente" NullDisplayText="<em>Sin reservar</em>" />
+                <asp:BoundField DataField="Paciente.ObraSocial" HeaderText="Obra Social" NullDisplayText="<em>Sin reservar</em>" />
             </Columns>
         </asp:GridView>
         
